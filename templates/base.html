@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}{{ titulo }}{% endblock %}</title>
+</head>
+<body>
+
+{% block navbar %}
+{% endblock %}
+
+{% block contenido %}
+    <hr>
+    <h6>Inicio de la aplicacion</h6>
+    <hr>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+</body>
+</html>
