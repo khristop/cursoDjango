@@ -6,4 +6,4 @@ from django.shortcuts import render, render_to_response
 
 def inicio(request):
 
-    return render(request,'gestionLibros/index.html', {'titulo':'estion de Bibliotecas'})
+    return render_to_response('gestionLibros/index.html', {'titulo':'Gestion de Bibliotecas'})
