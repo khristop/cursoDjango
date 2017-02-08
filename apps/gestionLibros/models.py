@@ -44,3 +44,24 @@ class Revista(ArticuloAbstract):
     genero = models.ForeignKey(Genero)
     editor = models.CharField(max_length=50, blank=False)
     fecha = models.DateField()
+
+
+class ReviewLibro(models.Model):
+
+    SCORES_CHOICES = (
+        (1, 'Muy malo'),
+        (2, 'Malo'),
+        (3, 'Bueno'),
+        (4, 'Muy Bueno'),
+        (5, 'Inolvidable'),
+    )
+
+    usuario = models.CharField(max_length=50, blank=False)
+    libro = models.ForeignKey(Libro, on_delete=models.CASCADE)
+    comentario = models.CharField(max_length=500, blank=False)
+    puntuacion = models.IntegerField(blank=False, choices=SCORES_CHOICES)
+    fecha = models.DateField(auto_now_add=True)
+    fechaActualizacion = models.DateField(auto_now=True)
+
+    def __str__(self):
+        return str(self.libro) + ' - ' + self.usuario + ' - ' + str(self.fecha)
