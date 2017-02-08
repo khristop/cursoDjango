@@ -25,7 +25,7 @@ class Genero(models.Model):
 
     nombre = models.CharField(max_length=25, blank=False, unique=True)
     descripcion = models.CharField(max_length=150, blank=True)
-    categSimilares = models.ManyToManyField("self")
+    categSimilares = models.ManyToManyField("self", blank=True)
 
     def __str__(self):
         return self.nombre
