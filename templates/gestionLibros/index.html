@@ -1,5 +1,35 @@
 {% extends './base.html' %}
 
 {% block contenido %}
+
     {{ block.super }}
+
+
+
 {% endblock %}
+
+{% block articulos %}
+        {% for libro in lista  %}
+        <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+                            <img src="http://placehold.it/320x150" alt="">
+                            <div class="caption">
+                                <h4 class="pull-right">${{ libro.precio }}</h4>
+                                <h4><a href="#">{{ libro.titulo }}</a>
+                                </h4>
+                                <p>{{ libro.descripcion }}</p>
+                            </div>
+                            <div class="ratings">
+                                <p class="pull-right">15 reviews</p>
+                                <p>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+        {% endfor %}
+    {% endblock %}

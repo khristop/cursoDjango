@@ -9,11 +9,12 @@ class ArticuloAbstract(models.Model):
 
     titulo= models.CharField(max_length=50, blank=False)
     descripcion = models.CharField(max_length=200, blank=True)
-    fechaIngreso = models.DateField(auto_now_add=True)
+    fechaIngreso = models.DateField(auto_now_add=True) ## YYYY-MM-DD
     ultimaFechaIngreso = models.DateField(auto_now=True)
     cantidad = models.IntegerField(default=0)
     precio = models.DecimalField(decimal_places=2, max_digits=6, default=0.00)
-
+    # 0000.00
+    # ArticuloAbstract <Object>
     def __str__(self):
         return self.titulo
 
@@ -36,7 +37,7 @@ class Libro(ArticuloAbstract):
     autor= models.CharField(max_length=50, blank=False, default='Anonimo')
     edicion= models.IntegerField(blank=False, default=1)
     pubDate = models.DateField(blank=False)
-    genero = models.ForeignKey(Genero)
+    genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
 
 
 class Revista(ArticuloAbstract):
