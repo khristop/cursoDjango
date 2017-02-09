@@ -8,6 +8,13 @@
 
 {% endblock %}
 
+{% block categorias %}
+    {% for cat in listaCat %}
+        <a href="#" class="list-group-item">{{ cat.nombre }}</a>
+    {% endfor %}
+
+{%  endblock %}
+
 {% block articulos %}
         {% for libro in lista  %}
         <div class="col-sm-4 col-lg-4 col-md-4">
@@ -19,8 +26,9 @@
                                 </h4>
                                 <p>{{ libro.descripcion }}</p>
                             </div>
+
                             <div class="ratings">
-                                <p class="pull-right">15 reviews</p>
+                                <p class="pull-right">0 reviews</p>
                                 <p>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
