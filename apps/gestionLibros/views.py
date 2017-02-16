@@ -1,9 +1,14 @@
 import json
+
+from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response, redirect
 from django.core import serializers
 
 # modelos
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
+from .forms import LibroForm
 from .models import Libro, ReviewLibro, Genero
 
 # Create your views here.
@@ -23,10 +28,24 @@ def inicio(request):
     else:
         return redirect('/')
 
+
+class LibroCreate(CreateView):
+    model = Libro
+    form_class = LibroForm
+
+
+class LibroUpdate(UpdateView):
+    model = Libro
+    form_class = LibroForm
+
+
+class LibroDelete(DeleteView):
+    model = Libro
+    success_url = reverse_lazy('inicioApp')
+
+
 class gestionLibro(View):
 
     def get(self, request):
-        listaObjetos = Libro.objects.all()
-        print listaObjetos
-
+        listaObjetos = serializers.serialize('json',Libro.objects.all())
         return HttpResponse(listaObjetos)

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 
 # Create your models here.
@@ -38,6 +39,9 @@ class Libro(ArticuloAbstract):
     edicion= models.IntegerField(blank=False, default=1)
     pubDate = models.DateField(blank=False)
     genero = models.ForeignKey(Genero, on_delete=models.CASCADE)
+
+    def get_absolute_url(self):
+        return reverse('libro-detail', kwargs={'pk': self.pk})
 
 
 class Revista(ArticuloAbstract):

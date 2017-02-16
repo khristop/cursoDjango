@@ -1,10 +1,5 @@
 {% extends './base.html' %}
 
-{% block contenido %}
-
-    {{ block.super }}
-
-{% endblock %}
 
 {% block categorias %}
     {% for cat in listaCat %}
@@ -26,7 +21,7 @@
                             </div>
 
                             <div class="ratings">
-                                <p class="pull-right">0 reviews</p>
+                                <p class="pull-right">0 disponibles</p>
                                 <p>
                                     <span class="glyphicon glyphicon-star"></span>
                                     <span class="glyphicon glyphicon-star"></span>
@@ -38,4 +33,4 @@
                         </div>
                     </div>
         {% endfor %}
-    {% endblock %}
+{% endblock %}
