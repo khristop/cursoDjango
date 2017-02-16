@@ -1,0 +1,38 @@
+{% extends './base.html' %}
+
+{% block contenido %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="jumbotron">
+                <h2 class="text-center">Gestion de libros</h2>
+                <hr>
+                <table class="table table-bordered table-responsive">
+                    <thead>
+                        <tr>
+                            <th>Libro</th>
+                            <th>Descripcion</th>
+                            <th>accion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for libro in lista %}
+                        <tr>
+                            <td>{{ libro.titulo }}</td>
+                            <td>{{ libro.descripcion }}</td>
+                            <td>
+                                <a href="libro/{{ libro.pk }}" class="btn btn-info"> editar</a>
+                                <a href="libro/{{ libro.pk }}/delete" class="btn btn-danger">eliminar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+                <hr>
+                <a href="/libro/add" class="btn btn-success">Agregar nuevo libro</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

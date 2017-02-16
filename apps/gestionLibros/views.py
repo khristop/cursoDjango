@@ -6,6 +6,7 @@ from django.shortcuts import render, render_to_response, redirect
 from django.core import serializers
 
 # modelos
+from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from .forms import LibroForm
@@ -28,15 +29,36 @@ def inicio(request):
     else:
         return redirect('/')
 
+class GestionTemplate(View):
+
+    def get(self, request):
+        return render_to_response('gestionLibros/gestion.html', {'lista':Libro.objects.all()})
+
+
+def crearLibro(request):
+
+    if request.method=='get' :
+        formulario = LibroForm
+        return render_to_response('gestionLibros/libro_form.html',{'form':formulario})
+
+    elif request.method=='post':
+
+        precio =request.body.precio;
+
+        return HttpResponse(precio)
 
 class LibroCreate(CreateView):
     model = Libro
     form_class = LibroForm
+    success_url = reverse_lazy('inicioApp')
+
 
 
 class LibroUpdate(UpdateView):
     model = Libro
     form_class = LibroForm
+    success_url = reverse_lazy('inicioApp')
+
 
 
 class LibroDelete(DeleteView):

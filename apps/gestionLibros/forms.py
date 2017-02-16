@@ -7,4 +7,4 @@ class LibroForm(ModelForm):
 
     class Meta:
         model= Libro
-        fields = ['autor','edicion','pubDate']
+        fields = ['titulo','descripcion','cantidad','precio','autor','edicion','pubDate','genero']
