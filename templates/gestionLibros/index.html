@@ -19,6 +19,9 @@
                                 </h4>
                                 <p>{{ libro.descripcion }}</p>
                             </div>
+                            <div>
+                                <a href="{% url 'verlibro' libro.pk %}" class="btn btn-warning"> Ver ahora</a>
+                            </div>
 
                             <div class="ratings">
                                 <p class="pull-right">0 disponibles</p>

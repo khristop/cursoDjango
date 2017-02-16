@@ -2,8 +2,9 @@ import json
 
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponse
-from django.shortcuts import render, render_to_response, redirect
+from django.shortcuts import render, render_to_response, redirect, get_object_or_404
 from django.core import serializers
+
 
 # modelos
 from django.views.generic import TemplateView
@@ -17,7 +18,6 @@ from django.views.generic import View
 
 
 def inicio(request):
-
     if request.method == 'GET':
         listaObjetos = Libro.objects.all()
         return render_to_response('gestionLibros/index.html',
@@ -28,6 +28,14 @@ def inicio(request):
                                    })
     else:
         return redirect('/')
+
+def verLibro(request, id_libro):
+
+    libro = Libro.objects.all().filter(pk=id_libro)
+
+    return render_to_response('gestionLibros/detalleLibro.html', {'libro':libro[0]})
+
+
 
 class GestionTemplate(View):
 

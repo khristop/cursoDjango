@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^', include('apps.gestionLibros.urls')),
+    url(r'^compra/', include('apps.caja.urls')),
     url(r'^admin/', admin.site.urls, name='gestionLibros'),
 ]
